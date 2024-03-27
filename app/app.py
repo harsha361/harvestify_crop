@@ -9,10 +9,10 @@ import requests
 import config
 import pickle
 import io
-import torch
-from torchvision import transforms
+#import torch
+#from torchvision import transforms
 from PIL import Image
-from utils.model import ResNet9
+#from utils.model import ResNet9
 # ==============================================================================================
 
 # -------------------------LOADING THE TRAINED MODELS -----------------------------------------------
@@ -58,11 +58,11 @@ disease_classes = ['Apple___Apple_scab',
                    'Tomato___Tomato_mosaic_virus',
                    'Tomato___healthy']
 
-disease_model_path = 'models/plant_disease_model.pth'
-disease_model = ResNet9(3, len(disease_classes))
-disease_model.load_state_dict(torch.load(
-    disease_model_path, map_location=torch.device('cpu')))
-disease_model.eval()
+#disease_model_path = 'models/plant_disease_model.pth'
+#disease_model = ResNet9(3, len(disease_classes))
+#disease_model.load_state_dict(torch.load(
+#    disease_model_path, map_location=torch.device('cpu')))
+#disease_model.eval()
 
 
 # Loading crop recommendation model
@@ -100,7 +100,7 @@ def weather_fetch(city_name):
         return None
 
 
-def predict_image(img, model=disease_model):
+#def predict_image(img, model=disease_model):
     """
     Transforms image to tensor and predicts disease label
     :params: image
@@ -262,4 +262,4 @@ def disease_prediction():
 
 # ===============================================================================================
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(host='0.0.0.0',port=8080)
